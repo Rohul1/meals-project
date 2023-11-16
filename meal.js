@@ -47,6 +47,7 @@ fetch(url)
 
 const displayMealDetail = (meal) =>{
 const detailContainer = document.getElementById("detail-container")
+detailContainer.innerHTML = ``;
 const mealDiv = document.createElement("div")
 mealDiv.classList.add("card");
 mealDiv.innerHTML = `
