@@ -60,6 +60,9 @@ mealDiv.innerHTML = `
 `;
 
 detailContainer.appendChild(mealDiv);
+
+window.scrollTo(0,0);
+
 }
 
 loadMeals("");
