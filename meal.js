@@ -2,7 +2,14 @@ const loadMeals = (search) => {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`
     fetch(url)
     .then(res => res.json())
-    .then(data => displayMeals(data.meals))
+    .then(data => {
+      if (data.meals){
+        displayMeals(data.meals)
+      }
+      else{
+        return
+      }
+    })
 }
 
 const displayMeals = meals =>{
@@ -10,7 +17,7 @@ const displayMeals = meals =>{
     const mealsContainer = document.getElementById("meal-container")
     mealsContainer.innerHTML = ``;
     meals.forEach(meal => {
-        console.log(meal);
+        // console.log(meal);
       const mealDiv = document.createElement("div") 
       mealDiv.classList.add("col")
       mealDiv.innerHTML = `
@@ -26,9 +33,11 @@ const displayMeals = meals =>{
     }
 
 
-const searchFood = ()=> {
+function searchFood  () {
+  // console.log("button clicked")
     const searchField = document.getElementById("search-field")
     const searchText = searchField.value
+    console.log(searchText);
     loadMeals(searchText)
     searchField.value = "";
 }
